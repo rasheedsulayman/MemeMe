@@ -11,9 +11,11 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate , UITextFieldDelegate {
     @IBOutlet weak var memeImageView: UIImageView!
-    @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var buttomTextField: UITextField!
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
+    
+
     
     let memeTextAttributes:[String: Any] = [
         NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
@@ -27,8 +29,8 @@ UINavigationControllerDelegate , UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(animated)
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
     }
     
@@ -57,11 +59,7 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-    }
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             memeImageView.image = image
@@ -88,23 +86,44 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         present(controller, animated: true, completion: nil)
     }
     
-    func subscribeToKeyboardNotifications() {
+    func save()  {
+        let meme = Meme(topText: topTextField.text!, buttomText: buttomTextField.text!, originalImage: memeImageView.image!, memedImage: generateMemedImage())
+    }
+    
+    func generateMemedImage() -> UIImage {
         
+        // TODO: Hide toolbar and navbar
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        // TODO: Show toolbar and navbar
+        
+        return memedImage
+    }
+    
+    func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
     }
     
     func unsubscribeFromKeyboardNotifications() {
-        
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
     
     @objc func keyboardWillShow(_ notification:Notification) {
-        
         view.frame.origin.y -= getKeyboardHeight(notification)
     }
     
+    @objc func keyboardWillHide(_ notification:Notification) {
+        view.frame.origin.y += getKeyboardHeight(notification)
+    }
+    
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
-        
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.cgRectValue.height
