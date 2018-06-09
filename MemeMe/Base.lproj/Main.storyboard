@@ -18,17 +18,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cfl-J7-puj">
-                                <rect key="frame" x="67" y="160" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cfl-J7-puj" userLabel="MemeImageView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="588"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hD2-aM-rZG">
+                                <rect key="frame" x="0.0" y="610" width="375" height="37"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKO-zb-Wjd" userLabel="CameraButton">
+                                        <rect key="frame" x="14" y="3" width="54" height="30"/>
+                                        <state key="normal" title="Camera"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jX-O4-RP7" userLabel="AlbumButton">
+                                        <rect key="frame" x="102" y="3" width="44" height="30"/>
+                                        <state key="normal" title="Album"/>
+                                        <connections>
+                                            <action selector="pickImageFromAlbum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d6b-0B-eWP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGH-yX-FTm">
+                                        <rect key="frame" x="14" y="3" width="54" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="54" id="tqQ-zl-MxC"/>
+                                        </constraints>
+                                        <state key="normal" title="Camera"/>
+                                        <connections>
+                                            <action selector="pickImageFromCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eER-g5-lbE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="FGH-yX-FTm" firstAttribute="baseline" secondItem="pKO-zb-Wjd" secondAttribute="baseline" id="F2C-xv-VlA"/>
+                                    <constraint firstAttribute="height" constant="37" id="GsU-0V-u6N"/>
+                                    <constraint firstItem="pKO-zb-Wjd" firstAttribute="leading" secondItem="hD2-aM-rZG" secondAttribute="leading" constant="14" id="IXG-d6-6Ck"/>
+                                    <constraint firstItem="FGH-yX-FTm" firstAttribute="leading" secondItem="pKO-zb-Wjd" secondAttribute="leading" id="M8h-eG-uge"/>
+                                    <constraint firstItem="FGH-yX-FTm" firstAttribute="trailing" secondItem="pKO-zb-Wjd" secondAttribute="trailing" id="NC1-Vr-5xk"/>
+                                    <constraint firstItem="5jX-O4-RP7" firstAttribute="leading" secondItem="pKO-zb-Wjd" secondAttribute="trailing" constant="34" id="b6D-0u-IS5"/>
+                                    <constraint firstItem="5jX-O4-RP7" firstAttribute="baseline" secondItem="pKO-zb-Wjd" secondAttribute="baseline" id="eLe-vq-j7F"/>
+                                    <constraint firstAttribute="bottom" secondItem="pKO-zb-Wjd" secondAttribute="bottom" constant="4" id="oBH-ze-8X0"/>
+                                    <constraint firstItem="pKO-zb-Wjd" firstAttribute="top" secondItem="hD2-aM-rZG" secondAttribute="top" constant="3" id="ubu-Wt-ZwQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Cfl-J7-puj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6md-Du-bbE"/>
+                            <constraint firstItem="Cfl-J7-puj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="C4w-jw-XKn"/>
+                            <constraint firstItem="hD2-aM-rZG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Yaq-ji-4FZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Cfl-J7-puj" secondAttribute="trailing" id="Z55-re-dwn"/>
+                            <constraint firstItem="Cfl-J7-puj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ep3-e0-2Wt"/>
+                            <constraint firstItem="hD2-aM-rZG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hCY-Tk-OgL"/>
+                            <constraint firstItem="hD2-aM-rZG" firstAttribute="top" secondItem="Cfl-J7-puj" secondAttribute="bottom" constant="2" id="m2P-q3-PnI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hD2-aM-rZG" secondAttribute="bottom" constant="20" id="vX0-9T-Qeb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="memeImageView" destination="Cfl-J7-puj" id="MxZ-tL-v2R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>
