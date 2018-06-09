@@ -16,7 +16,7 @@ UINavigationControllerDelegate , UITextFieldDelegate {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     var memedImage: UIImage!
     @IBOutlet weak var shareButton: UIBarButtonItem!
-    
+
     
     let memeTextAttributes:[String: Any] = [
         NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
@@ -34,7 +34,6 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
         //shareButton.isEnabled = false
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -42,7 +41,7 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         unsubscribeFromKeyboardNotifications()
     }
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         buttomTextField.textAlignment = .center
@@ -66,6 +65,7 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             print("About to enable share button")
             self.shareButton.isEnabled = true
+
             memeImageView.image = image
         }
         dismiss(animated: true, completion: nil)
@@ -90,8 +90,9 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         present(controller, animated: true, completion: nil)
     }
     
+
      @IBAction func shareMeme()  {
-         memedImage = generateMemedImage()
+        memedImage = generateMemedImage()
         let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         present(controller, animated: true) {
             //self.save()
@@ -105,8 +106,10 @@ UINavigationControllerDelegate , UITextFieldDelegate {
     func generateMemedImage() -> UIImage {
         
         // TODO: Hide toolbar and navbar
+
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.navigationController?.setToolbarHidden(true, animated: false)
+
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
@@ -114,8 +117,10 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         UIGraphicsEndImageContext()
         
         // TODO: Show toolbar and navbar
+
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationController?.setToolbarHidden(false, animated: false)
+
         
         return memedImage
     }

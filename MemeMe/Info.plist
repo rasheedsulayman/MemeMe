@@ -33,6 +33,7 @@ NSCameraUsageDescription
 	<string></string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Need to save Images to gallery</string>
+
 	<key>CFBundleDisplayName</key>
 	<string></string>
 	<key>UIRequiredDeviceCapabilities</key>
