@@ -15,12 +15,29 @@ UINavigationControllerDelegate , UITextFieldDelegate {
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var buttomTextField: UITextField!
     
- 
+    let memeTextAttributes:[String: Any] = [
+        NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
+        NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
+        NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSAttributedStringKey.strokeWidth.rawValue: NSNumber(value: 4.0)]
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +45,8 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         topTextField.textAlignment = .center
         topTextField.delegate = self
         buttomTextField.delegate = self
+        buttomTextField.defaultTextAttributes = memeTextAttributes
+        topTextField.defaultTextAttributes = memeTextAttributes
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -69,6 +88,27 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         present(controller, animated: true, completion: nil)
     }
     
+    func subscribeToKeyboardNotifications() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification:Notification) {
+        
+        view.frame.origin.y -= getKeyboardHeight(notification)
+    }
+    
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+        
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
+    }
     
 }
 
