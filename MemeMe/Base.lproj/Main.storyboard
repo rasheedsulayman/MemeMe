@@ -35,46 +35,56 @@
                                             <action selector="pickImageFromAlbum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d6b-0B-eWP"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGH-yX-FTm">
-                                        <rect key="frame" x="14" y="3" width="54" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="54" id="tqQ-zl-MxC"/>
-                                        </constraints>
-                                        <state key="normal" title="Camera"/>
-                                        <connections>
-                                            <action selector="pickImageFromCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eER-g5-lbE"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="FGH-yX-FTm" firstAttribute="baseline" secondItem="pKO-zb-Wjd" secondAttribute="baseline" id="F2C-xv-VlA"/>
                                     <constraint firstAttribute="height" constant="37" id="GsU-0V-u6N"/>
                                     <constraint firstItem="pKO-zb-Wjd" firstAttribute="leading" secondItem="hD2-aM-rZG" secondAttribute="leading" constant="14" id="IXG-d6-6Ck"/>
-                                    <constraint firstItem="FGH-yX-FTm" firstAttribute="leading" secondItem="pKO-zb-Wjd" secondAttribute="leading" id="M8h-eG-uge"/>
-                                    <constraint firstItem="FGH-yX-FTm" firstAttribute="trailing" secondItem="pKO-zb-Wjd" secondAttribute="trailing" id="NC1-Vr-5xk"/>
                                     <constraint firstItem="5jX-O4-RP7" firstAttribute="leading" secondItem="pKO-zb-Wjd" secondAttribute="trailing" constant="34" id="b6D-0u-IS5"/>
                                     <constraint firstItem="5jX-O4-RP7" firstAttribute="baseline" secondItem="pKO-zb-Wjd" secondAttribute="baseline" id="eLe-vq-j7F"/>
                                     <constraint firstAttribute="bottom" secondItem="pKO-zb-Wjd" secondAttribute="bottom" constant="4" id="oBH-ze-8X0"/>
                                     <constraint firstItem="pKO-zb-Wjd" firstAttribute="top" secondItem="hD2-aM-rZG" secondAttribute="top" constant="3" id="ubu-Wt-ZwQ"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n03-aX-cGm">
+                                <rect key="frame" x="139" y="69" width="97" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Buttom" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2vJ-V2-02O">
+                                <rect key="frame" x="139" y="530" width="97" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2vJ-V2-02O" secondAttribute="bottom" constant="107" id="3VK-lh-WDk"/>
                             <constraint firstItem="Cfl-J7-puj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6md-Du-bbE"/>
                             <constraint firstItem="Cfl-J7-puj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="C4w-jw-XKn"/>
+                            <constraint firstItem="n03-aX-cGm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="139" id="EuN-5k-wau"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2vJ-V2-02O" secondAttribute="trailing" constant="139" id="SnZ-J6-QaG"/>
+                            <constraint firstItem="n03-aX-cGm" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Wwx-0y-5sC"/>
                             <constraint firstItem="hD2-aM-rZG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Yaq-ji-4FZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Cfl-J7-puj" secondAttribute="trailing" id="Z55-re-dwn"/>
+                            <constraint firstItem="n03-aX-cGm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="49" id="a7v-P8-B2j"/>
                             <constraint firstItem="Cfl-J7-puj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ep3-e0-2Wt"/>
+                            <constraint firstItem="2vJ-V2-02O" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fzB-i3-Pbn"/>
                             <constraint firstItem="hD2-aM-rZG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hCY-Tk-OgL"/>
                             <constraint firstItem="hD2-aM-rZG" firstAttribute="top" secondItem="Cfl-J7-puj" secondAttribute="bottom" constant="2" id="m2P-q3-PnI"/>
+                            <constraint firstItem="2vJ-V2-02O" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="139" id="pXO-gx-63M"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hD2-aM-rZG" secondAttribute="bottom" constant="20" id="vX0-9T-Qeb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="n03-aX-cGm" secondAttribute="trailing" constant="139" id="zwX-GD-QqV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="buttomTextField" destination="2vJ-V2-02O" id="Bch-6g-Vjg"/>
+                        <outlet property="cameraButton" destination="pKO-zb-Wjd" id="2zx-lj-XmM"/>
                         <outlet property="memeImageView" destination="Cfl-J7-puj" id="MxZ-tL-v2R"/>
+                        <outlet property="topTextField" destination="n03-aX-cGm" id="4d1-UF-vv5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
