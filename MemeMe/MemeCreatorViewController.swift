@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate,
+class MemeCreatorViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate , UITextFieldDelegate {
     @IBOutlet weak var memeImageView: UIImageView!
     @IBOutlet weak var topTextField: UITextField!
@@ -17,6 +17,11 @@ UINavigationControllerDelegate , UITextFieldDelegate {
     var memedImage: UIImage!
     @IBOutlet weak var shareButton: UIBarButtonItem!
 
+    var memes: [Meme]! {
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.memes
+    }
     
     let memeTextAttributes:[String: Any] = [
         NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
@@ -33,7 +38,6 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
-        //shareButton.isEnabled = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,6 +54,8 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         buttomTextField.delegate = self
         buttomTextField.defaultTextAttributes = memeTextAttributes
         topTextField.defaultTextAttributes = memeTextAttributes
+        shareButton.isEnabled = false
+
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -65,7 +71,6 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             print("About to enable share button")
             self.shareButton.isEnabled = true
-
             memeImageView.image = image
         }
         dismiss(animated: true, completion: nil)
@@ -95,12 +100,16 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         memedImage = generateMemedImage()
         let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         present(controller, animated: true) {
-            //self.save()
+            self.save()
         }
     }
     
     func save()  {
         let meme = Meme(topText: topTextField.text!, buttomText: buttomTextField.text!, originalImage: memeImageView.image!, memedImage: memedImage)
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     func generateMemedImage() -> UIImage {
@@ -121,7 +130,6 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationController?.setToolbarHidden(false, animated: false)
 
-        
         return memedImage
     }
     
@@ -148,6 +156,5 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.cgRectValue.height
     }
-    
 }
 

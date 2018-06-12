@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IaQ-xj-MVl">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Meme Creator View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MemeCreatorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cfl-J7-puj" userLabel="MemeImageView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n03-aX-cGm">
-                                <rect key="frame" x="60" y="113" width="255" height="30"/>
+                                <rect key="frame" x="60" y="113" width="480" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="0.48937821061643838" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Buttom" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2vJ-V2-02O">
-                                <rect key="frame" x="60" y="486" width="255" height="30"/>
+                                <rect key="frame" x="60" y="419" width="480" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="0.52175192636986301" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -73,13 +69,11 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="vWF-M4-NlO"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="t9y-sw-mDW">
-
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="leU-MK-iui">
                             <connections>
                                 <action selector="shareMeme" destination="BYZ-38-t0r" id="dN5-wm-F89"/>
                             </connections>
                         </barButtonItem>
-
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Yhw-JG-BrF" userLabel="Cancel"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -89,7 +83,6 @@
                         <outlet property="memeImageView" destination="Cfl-J7-puj" id="MxZ-tL-v2R"/>
                         <outlet property="navigationItem" destination="t9y-sw-mDW" id="eAK-Oe-TJK"/>
                         <outlet property="shareButton" destination="leU-MK-iui" id="tPF-iQ-NFV"/>
-
                         <outlet property="topTextField" destination="n03-aX-cGm" id="4d1-UF-vv5"/>
                     </connections>
                 </viewController>
