@@ -112,7 +112,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="o4V-nS-HXN" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemeCollectionIdentifier" id="o4V-nS-HXN" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="176" height="169"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -142,6 +142,9 @@
                         <viewLayoutGuide key="safeArea" id="Uau-uH-1Lb"/>
                     </view>
                     <navigationItem key="navigationItem" id="JY1-XE-JMv"/>
+                    <connections>
+                        <outlet property="collectionView" destination="0iW-Oy-1v0" id="Jc4-zq-rbW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZ1-eG-6cL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -159,7 +162,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="CJJ-gm-c76">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MemeTableIdentifier" id="CJJ-gm-c76">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CJJ-gm-c76" id="3Mp-kh-4Ib">
@@ -180,6 +183,9 @@
                         <viewLayoutGuide key="safeArea" id="Kcd-Bv-BaT"/>
                     </view>
                     <navigationItem key="navigationItem" id="XjE-qZ-vkN"/>
+                    <connections>
+                        <outlet property="tableView" destination="Fvb-GF-Eyz" id="YhA-Wl-T53"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ny-Ox-Z9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -206,7 +212,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Va8-w2-sbY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kZq-LA-bj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="IaQ-xj-MVl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FyI-dm-p6g">
@@ -222,6 +227,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ofT-yG-z8p"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kZq-LA-bj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1492" y="132.68365817091455"/>
         </scene>

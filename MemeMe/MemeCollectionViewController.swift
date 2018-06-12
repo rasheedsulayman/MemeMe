@@ -8,8 +8,9 @@
 
 import UIKit
 
-class MemeCollectionViewController: UIViewController {
-
+class MemeCollectionViewController: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource {
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     var memes: [Meme]! {
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
@@ -19,7 +20,8 @@ class MemeCollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+         collectionView.delegate = self
+         collectionView.dataSource = self
         // Do any additional setup after loading the view.
     }
 
@@ -28,6 +30,17 @@ class MemeCollectionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"MemeCollectionIdentifier" , for: indexPath) as! MemeCollectionViewCell
+        let currentMeme = memes[indexPath.row]
+        //cell.memImageView = currentMeme.topText
+        cell.memImageView.image = currentMeme.originalImage
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return memes.count
+    }
 
     /*
     // MARK: - Navigation
