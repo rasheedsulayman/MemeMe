@@ -17,11 +17,6 @@ UINavigationControllerDelegate , UITextFieldDelegate {
     var memedImage: UIImage!
     @IBOutlet weak var shareButton: UIBarButtonItem!
 
-    var memes: [Meme]! {
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        return appDelegate.memes
-    }
     
     let memeTextAttributes:[String: Any] = [
         NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
