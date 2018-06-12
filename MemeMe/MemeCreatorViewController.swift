@@ -19,10 +19,13 @@ UINavigationControllerDelegate , UITextFieldDelegate {
 
     
     let memeTextAttributes:[String: Any] = [
+        
         NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
         NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
         NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSAttributedStringKey.strokeWidth.rawValue: NSNumber(value: 4.0)]
+        NSAttributedStringKey.strokeWidth.rawValue: NSNumber(value: 4.0)
+    
+    ]
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -136,6 +139,10 @@ UINavigationControllerDelegate , UITextFieldDelegate {
     func unsubscribeFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    @IBAction func onCancelButtonClicked(_ sender: Any) {
+        //TODO dismiss controller
     }
     
     @objc func keyboardWillShow(_ notification:Notification) {
