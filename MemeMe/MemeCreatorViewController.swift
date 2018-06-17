@@ -19,7 +19,6 @@ UINavigationControllerDelegate , UITextFieldDelegate {
 
     
     let memeTextAttributes:[String: Any] = [
-        
         NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
         NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
         NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
@@ -53,7 +52,6 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         buttomTextField.defaultTextAttributes = memeTextAttributes
         topTextField.defaultTextAttributes = memeTextAttributes
         shareButton.isEnabled = false
-
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -72,7 +70,6 @@ UINavigationControllerDelegate , UITextFieldDelegate {
             memeImageView.image = image
         }
         dismiss(animated: true, completion: nil)
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -102,6 +99,12 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         }
     }
     
+    @IBAction func onclickCancelButton(_ sender: Any) {
+        dismiss(animated: false, completion: nil)
+        print("Cancel button clicked")
+    }
+    
+    
     func save()  {
         let meme = Meme(topText: topTextField.text!, buttomText: buttomTextField.text!, originalImage: memeImageView.image!, memedImage: memedImage)
         // Add it to the memes array in the Application Delegate
@@ -124,7 +127,7 @@ UINavigationControllerDelegate , UITextFieldDelegate {
         UIGraphicsEndImageContext()
         
         // TODO: Show toolbar and navbar
-
+        
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationController?.setToolbarHidden(false, animated: false)
 

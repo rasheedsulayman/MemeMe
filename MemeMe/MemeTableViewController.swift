@@ -24,6 +24,11 @@ class MemeTableViewController: UIViewController, UITableViewDataSource , UITable
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("The meme count is \(memes.count)")
+        tableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
@@ -37,17 +42,15 @@ class MemeTableViewController: UIViewController, UITableViewDataSource , UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
-    
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     
-
     /*
     // MARK: - Navigation
 

@@ -10,6 +10,7 @@ import UIKit
 
 class MemeCollectionViewController: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     var memes: [Meme]! {
         let object = UIApplication.shared.delegate
@@ -23,6 +24,18 @@ class MemeCollectionViewController: UIViewController , UICollectionViewDelegate 
          collectionView.delegate = self
          collectionView.dataSource = self
         // Do any additional setup after loading the view.
+        
+        let space:CGFloat = 3.0
+        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+        
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("The meme count is \(memes.count)")
+        self.collectionView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
